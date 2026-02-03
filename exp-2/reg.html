@@ -8,19 +8,22 @@
             background-color: #e6f2ff;
         }
         .box {
-            width: 350px;
-            margin: 80px auto;
+            width: 380px;
+            margin: 60px auto;
             padding: 20px;
             background: white;
-            text-align: center;
         }
-        input {
-            width: 90%;
+        input, textarea {
+            width: 95%;
             padding: 8px;
-            margin: 8px 0;
+            margin: 6px 0;
         }
         button {
             padding: 8px 20px;
+        }
+        .error {
+            color: red;
+            font-size: 13px;
         }
     </style>
 </head>
@@ -29,19 +32,118 @@
 
 <div class="box">
     <h2>Registration</h2>
+    Username:
+    <input type="text" id="username">
+    <div class="error" id="userErr"></div>
 
-    <input type="text" placeholder="Username"><br>
-    <input type="email" placeholder="Email"><br>
-    <input type="text" placeholder="Register Number"><br>
-    <input type="password" placeholder="Password"><br>
+    First Name:
+    <input type="text" id="fname">
+    <div class="error" id="fnameErr"></div>
 
-    <button onclick="register()">Submit</button>
+    Last Name:
+    <input type="text" id="lname">
+    <div class="error" id="lnameErr"></div>
+
+    Email:
+    <input type="text" id="email">
+    <div class="error" id="emailErr"></div>
+
+    Mobile Number:
+    <input type="text" id="mobile">
+    <div class="error" id="mobileErr"></div>
+
+    Password:
+    <input type="password" id="password">
+    <div class="error" id="passErr"></div>
+
+    Address:
+    <textarea id="address"></textarea>
+    <div class="error" id="addrErr"></div>
+
+    <br>
+    <button type="button" onclick="validate()">Submit</button>
 </div>
 
 <script>
-    function register() {
-                window.location.href = "Ex.html";
+function validate() {
+
+    // get values
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var email = document.getElementById("email").value;
+    var mobile = document.getElementById("mobile").value;
+    var password = document.getElementById("password").value;
+    var address = document.getElementById("address").value;
+
+    // regex patterns
+    var namePattern = /^[A-Za-z]+$/;
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var mobilePattern = /^[0-9]{10}$/;
+
+    // clear errors
+    document.getElementById("fnameErr").innerHTML = "";
+    document.getElementById("lnameErr").innerHTML = "";
+    document.getElementById("emailErr").innerHTML = "";
+    document.getElementById("mobileErr").innerHTML = "";
+    document.getElementById("passErr").innerHTML = "";
+    document.getElementById("addrErr").innerHTML = "";
+
+    var valid = true;
+	
+
+    // First Name
+    if (!namePattern.test(fname) || fname.length < 6) {
+        document.getElementById("fnameErr").innerHTML =
+        "First name must contain only alphabets and minimum 6 characters";
+        valid = false;
     }
+
+    // Last Name
+    if (lname === "") {
+        document.getElementById("lnameErr").innerHTML =
+        "Last name cannot be empty";
+        valid = false;
+    }
+
+    // Email
+    if (!emailPattern.test(email)) {
+        document.getElementById("emailErr").innerHTML =
+        "Invalid email format (name@domain.com)";
+        valid = false;
+    }
+
+    // Mobile
+    if (!mobilePattern.test(mobile)) {
+        document.getElementById("mobileErr").innerHTML =
+        "Mobile number must contain exactly 10 digits";
+        valid = false;
+    }
+
+    // Password
+    if (password.length < 6) {
+        document.getElementById("passErr").innerHTML =
+        "Password must be at least 6 characters";
+        valid = false;
+    }
+
+    // Address
+    if (address === "") {
+        document.getElementById("addrErr").innerHTML =
+        "Address cannot be empty";
+        valid = false;
+    }
+
+    if (valid) {
+    // save registered data
+    localStorage.setItem("regUser", fname);
+    localStorage.setItem("regPass", password);
+
+    alert("Registration Successful");
+    window.location.href = "login.html";
+}
+
+
+}
 </script>
 
 </body>
