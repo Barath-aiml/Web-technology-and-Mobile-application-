@@ -1,65 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #f2f2f2;
-        }
-        .box {
-            width: 300px;
-            margin: 100px auto;
-            padding: 20px;
-            background: white;
-            text-align: center;
-        }
-        input {
-            width: 90%;
-            padding: 8px;
-            margin: 8px 0;
-        }
-        button {
-            padding: 8px 20px;
-        }
-        a {
-            display: block;
-            margin-top: 10px;
-        }
-    </style>
+	<title>Login Page</title>
+	<style>
+		body {
+			font-family: Arial;
+			background-color: #f2f2f2;
+		}
+
+		.box {
+			width: 300px;
+			margin: 100px auto;
+			padding: 20px;
+			background: white;
+			text-align: center;
+		}
+
+		input {
+			width: 90%;
+			padding: 8px;
+			margin: 8px 0;
+		}
+
+		button {
+			padding: 8px 20px;
+		}
+
+		a {
+			display: block;
+			margin-top: 10px;
+		}
+	</style>
 </head>
 
 <body>
-
-<div class="box">
-    <h2>Login</h2>
-
-    <input type="text" id="loginUser" placeholder="Username"><br>
-    <input type="password" id="loginPass" placeholder="Password"><br>
-
-    <button onclick="login()">Submit</button>
-
-    <a href="reg.html">Create New Account</a>
-</div>
-<script>
+	<div class="box">
+		<h2>Login</h2> 
+		<input type="text" id="loginUser" placeholder="Username"><br> 
+		<input type="password"id="loginPass" placeholder="Password"><br> 
+		<button onclick="login()">Submit</button> 
+		<a href="reg.html">Create New Account</a>
+	</div>
+<script> 
 function login() {
-
-    var enteredUser = document.getElementById("loginUser").value;
-    var enteredPass = document.getElementById("loginPass").value;
-
-    var storedUser = localStorage.getItem("regUser");
-    var storedPass = localStorage.getItem("regPass");
-
-    if (enteredUser === storedUser && enteredPass === storedPass) {
-        
-        window.location.href = "wel.html";
-    } else {
-      
-        alert("Oh! Oh! You have to register first");
-    }
-}
+ window.location.href = "wel.html"; 
+} 
 </script>
-
-
 </body>
+
 </html>
