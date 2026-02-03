@@ -41,12 +41,25 @@
 
     <a href="reg.html">Create New Account</a>
 </div>
-
 <script>
-    function login() {
+function login() {
+
+    var enteredUser = document.getElementById("loginUser").value;
+    var enteredPass = document.getElementById("loginPass").value;
+
+    var storedUser = localStorage.getItem("regUser");
+    var storedPass = localStorage.getItem("regPass");
+
+    if (enteredUser === storedUser && enteredPass === storedPass) {
+        
         window.location.href = "wel.html";
+    } else {
+      
+        alert("Oh! Oh! You have to register first");
     }
+}
 </script>
+
 
 </body>
 </html>
