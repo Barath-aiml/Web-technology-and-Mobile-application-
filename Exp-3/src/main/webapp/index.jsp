@@ -5,8 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Hello</title>
+
+<style>
+    body {
+        background-color: lightblue;
+    }
+</style>
+
 </head>
-<body background-color="lightBlue">
-<h1>Hello World!.</h1>
+<body>
+<h1>Hello World!</h1>
 </body>
 </html>
